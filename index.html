@@ -1,0 +1,1140 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEUROSENSE | Biomedical Wearable for Autism Support</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7fbfa;
+            color: #17332f;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(247, 251, 250, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #dceae7;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #2d8f83;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #17332f;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #2d8f83;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 8% 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            background:
+                radial-gradient(circle at 80% 30%, #dff4ef 0%, transparent 35%),
+                #f7fbfa;
+        }
+
+        .hero-text {
+            max-width: 620px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: #e2f2ee;
+            color: #26776e;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 76px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #2d8f83;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #58706b;
+            margin-bottom: 35px;
+            max-width: 570px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #267f75;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #1d665f;
+        }
+
+        .secondary {
+            border: 1px solid #b8d5cf;
+            color: #267f75;
+            background: white;
+        }
+
+        .secondary:hover {
+            background: #edf7f5;
+        }
+
+        /* PRODUCT VISUAL */
+
+        .product-area {
+            width: 430px;
+            height: 430px;
+            border-radius: 50%;
+            background: #e4f4f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .device {
+            width: 250px;
+            height: 120px;
+            border-radius: 35px;
+            background: #172c2a;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: rotate(-8deg);
+            position: relative;
+        }
+
+        .device::after {
+            content: "NEUROSENSE";
+            position: absolute;
+            color: #9fe2d7;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .sensor-dot {
+            width: 16px;
+            height: 16px;
+            background: #6fd5c4;
+            border-radius: 50%;
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            box-shadow: 0 0 20px #6fd5c4;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            max-width: 750px;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #2d8f83;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 43px;
+            margin: 10px 0 15px;
+        }
+
+        .section-title p {
+            color: #657b76;
+            font-size: 17px;
+        }
+
+        /* PROBLEM */
+
+        .problem {
+            background: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .problem-card {
+            padding: 30px;
+            border: 1px solid #dceae7;
+            border-radius: 15px;
+            background: #fbfefd;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            color: #647873;
+        }
+
+        /* TECHNOLOGY */
+
+        .technology {
+            background: #edf7f5;
+        }
+
+        .sensor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .sensor {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            border: 1px solid #d8eae6;
+        }
+
+        .sensor-number {
+            font-size: 13px;
+            color: #2d8f83;
+            font-weight: bold;
+        }
+
+        .sensor h3 {
+            margin: 10px 0;
+        }
+
+        .sensor p {
+            color: #657873;
+            font-size: 15px;
+        }
+
+        /* HOW IT WORKS */
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 14px;
+            border: 1px solid #dceae7;
+        }
+
+        .step-number {
+            font-size: 40px;
+            font-weight: bold;
+            color: #c7e5df;
+        }
+
+        .step h3 {
+            margin: 10px 0;
+        }
+
+        .step p {
+            color: #687c77;
+            font-size: 14px;
+        }
+
+        /* BIOTECH */
+
+        .biotech {
+            background: #17332f;
+            color: white;
+        }
+
+        .biotech-content {
+            max-width: 900px;
+        }
+
+        .biotech small {
+            color: #83d7c8;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .biotech h2 {
+            font-size: 45px;
+            margin: 15px 0;
+        }
+
+        .biotech p {
+            color: #c5d8d4;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .biotech-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .biotech-list div {
+            padding: 18px;
+            border: 1px solid #31534e;
+            border-radius: 10px;
+        }
+
+        /* APP */
+
+        .app-section {
+            background: white;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .phone {
+            width: 280px;
+            height: 530px;
+            background: #152b28;
+            border-radius: 35px;
+            margin: auto;
+            padding: 30px 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+        }
+
+        .phone-screen {
+            background: #f3faf8;
+            height: 100%;
+            border-radius: 23px;
+            padding: 25px 18px;
+        }
+
+        .status {
+            padding: 18px;
+            background: #dff4ef;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .status strong {
+            color: #277b71;
+        }
+
+        .monitor {
+            height: 100px;
+            background: white;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 1px solid #d8e8e4;
+            padding: 15px;
+        }
+
+        /* SAFETY */
+
+        .safety {
+            background: #f3f9f7;
+        }
+
+        .safety-box {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 45px;
+            border-radius: 18px;
+            border: 1px solid #dbeae6;
+        }
+
+        .safety-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .safety-box p {
+            color: #667974;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+            background: #dff3ee;
+        }
+
+        .cta h2 {
+            font-size: 43px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #5d746e;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #122522;
+            color: #b8ceca;
+            padding: 45px 8%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        .copyright {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #2d4541;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .product-area {
+                width: 320px;
+                height: 320px;
+            }
+
+            .problem-grid,
+            .sensor-grid,
+            .workflow {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .problem-grid,
+            .sensor-grid,
+            .workflow,
+            .biotech-list {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2,
+            .biotech h2,
+            .cta h2 {
+                font-size: 34px;
+            }
+
+            .product-area {
+                width: 280px;
+                height: 280px;
+            }
+
+            .device {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            NEURO<span>SENSE</span>
+        </div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#app">Platform</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="tag">
+            BIOMEDICAL WEARABLE TECHNOLOGY
+        </div>
+
+        <h1>
+            Understand.<br>
+            <span>Alert.</span><br>
+            Support.
+        </h1>
+
+        <p>
+            NEUROSENSE is a wearable biosensing platform designed
+            to support autistic individuals by monitoring physiological,
+            behavioral and environmental signals associated with
+            stress and sensory overload.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#technology" class="btn primary">
+                Explore Technology
+            </a>
+
+            <a href="#about" class="btn secondary">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="product-area">
+
+        <div class="device">
+            <div class="sensor-dot"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="problem">
+
+    <div class="section-title">
+
+        <small>THE CHALLENGE</small>
+
+        <h2>
+            When stress becomes difficult to communicate.
+        </h2>
+
+        <p>
+            Autistic individuals may experience sensory overload
+            or heightened stress in situations where communicating
+            discomfort is difficult. NEUROSENSE aims to provide
+            an additional layer of physiological and environmental
+            awareness.
+        </p>
+
+    </div>
+
+
+    <div class="problem-grid">
+
+        <div class="problem-card">
+
+            <h3>Physiological Changes</h3>
+
+            <p>
+                Changes in heart rate, HRV, electrodermal activity
+                and other physiological signals can provide useful
+                information about the body's response to stress.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <h3>Sensory Environment</h3>
+
+            <p>
+                Noise and light levels can contribute to an individual's
+                sensory experience. Environmental sensing provides
+                additional context.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <h3>Communication Support</h3>
+
+            <p>
+                NEUROSENSE can translate collected signals into
+                understandable alerts and trends for the user
+                and authorized caregivers.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGY -->
+
+<section id="technology" class="technology">
+
+    <div class="section-title">
+
+        <small>MULTIMODAL BIOSENSING</small>
+
+        <h2>
+            Multiple biological and environmental signals.
+        </h2>
+
+        <p>
+            Instead of depending on a single measurement,
+            NEUROSENSE combines multiple data streams to create
+            a broader picture of the user's physiological state
+            and surrounding environment.
+        </p>
+
+    </div>
+
+
+    <div class="sensor-grid">
+
+        <div class="sensor">
+
+            <span class="sensor-number">01</span>
+
+            <h3>Heart Rate</h3>
+
+            <p>
+                Continuous heart-rate monitoring provides
+                physiological information that can contribute
+                to stress analysis.
+            </p>
+
+        </div>
+
+
+        <div class="sensor">
+
+            <span class="sensor-number">02</span>
+
+            <h3>Heart Rate Variability</h3>
+
+            <p>
+                HRV measurements can provide additional information
+                about changes in autonomic nervous-system activity.
+            </p>
+
+        </div>
+
+
+        <div class="sensor">
+
+            <span class="sensor-number">03</span>
+
+            <h3>EDA / GSR</h3>
+
+            <p>
+                Electrodermal activity measures changes in skin
+                conductance associated with sympathetic activity.
+            </p>
+
+        </div>
+
+
+        <div class="sensor">
+
+            <span class="sensor-number">04</span>
+
+            <h3>Skin Temperature</h3>
+
+            <p>
+                Skin-temperature trends provide another physiological
+                signal that can be analyzed alongside other measurements.
+            </p>
+
+        </div>
+
+
+        <div class="sensor">
+
+            <span class="sensor-number">05</span>
+
+            <h3>Motion</h3>
+
+            <p>
+                Motion sensing can help identify activity patterns,
+                movement changes and behavioral context.
+            </p>
+
+        </div>
+
+
+        <div class="sensor">
+
+            <span class="sensor-number">06</span>
+
+            <h3>Environment</h3>
+
+            <p>
+                Ambient noise and light sensing provides environmental
+                context around physiological changes.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section id="how">
+
+    <div class="section-title">
+
+        <small>THE SYSTEM</small>
+
+        <h2>
+            From biological signals to meaningful support.
+        </h2>
+
+    </div>
+
+
+    <div class="workflow">
+
+        <div class="step">
+
+            <div class="step-number">01</div>
+
+            <h3>Sense</h3>
+
+            <p>
+                Sensors continuously collect physiological,
+                movement and environmental signals.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">02</div>
+
+            <h3>Process</h3>
+
+            <p>
+                The collected signals are processed and combined
+                to identify meaningful changes and patterns.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">03</div>
+
+            <h3>Interpret</h3>
+
+            <p>
+                The system analyzes multiple signals together
+                rather than relying on one measurement alone.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">04</div>
+
+            <h3>Alert</h3>
+
+            <p>
+                Appropriate notifications can be delivered
+                through the wearable and connected caregiver platform.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BIOTECH SECTION -->
+
+<section class="biotech">
+
+    <div class="biotech-content">
+
+        <small>BIOMEDICAL ENGINEERING</small>
+
+        <h2>
+            Where biology meets wearable technology.
+        </h2>
+
+        <p>
+            NEUROSENSE combines principles of biosensing,
+            physiological signal processing, biomedical instrumentation
+            and intelligent data analysis into a wearable support system.
+        </p>
+
+
+        <div class="biotech-list">
+
+            <div>
+                <strong>Biomedical Sensors</strong><br>
+                Physiological signal acquisition
+            </div>
+
+            <div>
+                <strong>Signal Processing</strong><br>
+                Filtering and interpretation of sensor data
+            </div>
+
+            <div>
+                <strong>Multimodal Analysis</strong><br>
+                Combining multiple biological signals
+            </div>
+
+            <div>
+                <strong>Human-Centered Design</strong><br>
+                Designed around the needs of autistic individuals
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- APP -->
+
+<section id="app" class="app-section">
+
+    <div class="app-grid">
+
+        <div>
+
+            <div class="section-title">
+
+                <small>CONNECTED PLATFORM</small>
+
+                <h2>
+                    Turning complex signals into understandable information.
+                </h2>
+
+                <p>
+                    The companion platform can provide caregivers
+                    with real-time information, trends, alerts,
+                    historical observations and location support
+                    when enabled.
+                </p>
+
+            </div>
+
+
+            <div class="problem-card">
+
+                <h3>Real-Time Monitoring</h3>
+
+                <p>
+                    View available physiological and environmental
+                    information from the connected wearable.
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="problem-card">
+
+                <h3>Stress Trends</h3>
+
+                <p>
+                    Review patterns over time rather than focusing
+                    only on individual measurements.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="phone">
+
+            <div class="phone-screen">
+
+                <h3>NEUROSENSE</h3>
+
+                <p>Connected wearable</p>
+
+                <div class="status">
+
+                    <strong>MONITORING</strong>
+
+                    <br>
+
+                    Physiological signals active
+
+                </div>
+
+
+                <div class="monitor">
+
+                    <strong>Heart Rate</strong>
+
+                    <br>
+
+                    Live data
+
+                </div>
+
+
+                <div class="monitor">
+
+                    <strong>EDA</strong>
+
+                    <br>
+
+                    Signal detected
+
+                </div>
+
+
+                <div class="monitor">
+
+                    <strong>Environment</strong>
+
+                    <br>
+
+                    Noise / Light
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SAFETY -->
+
+<section class="safety">
+
+    <div class="safety-box">
+
+        <h3>
+            Designed as a support system — not a diagnosis.
+        </h3>
+
+        <p>
+            NEUROSENSE is intended to provide physiological,
+            behavioral and environmental information that may
+            support communication and caregiver awareness.
+            Sensor readings and algorithmic outputs should not
+            be treated as a medical diagnosis or a replacement
+            for professional healthcare assessment.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section id="contact" class="cta">
+
+    <h2>
+        Building a more responsive support system.
+    </h2>
+
+    <p>
+        NEUROSENSE brings together biomedical sensing,
+        wearable technology and human-centered design to
+        explore new ways of supporting autistic individuals.
+    </p>
+
+    <a href="mailto:contact@neurosense.example"
+       class="btn primary">
+        Contact NEUROSENSE
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>NEUROSENSE</h3>
+
+            <p>
+                Understand. Alert. Support.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Technology</h3>
+
+            <p>
+                Biosensing<br>
+                Wearable Systems<br>
+                Multimodal Monitoring
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Developed at</h3>
+
+            <p>
+                SRMIST Ramapuram
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 NEUROSENSE. Biomedical wearable technology concept.
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
+```
